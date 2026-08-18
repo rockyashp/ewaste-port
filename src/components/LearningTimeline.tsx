@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { BookOpen, Flame, Calculator, MessageSquare } from 'lucide-react';
-
+import { BookOpen, Flame, Calculator, MessageSquare, Recycle } from 'lucide-react';
 
 const milestones = [
   {
@@ -36,18 +35,22 @@ const milestones = [
     icon: Calculator,
     color: 'text-amber-600 bg-amber-50 border-amber-200',
   },
-  
+  {
+    date: 'Week 3 — Activity',
+    topic: 'E-Waste Collection and Segregation',
+    desc: 'A practical activity focused on identifying discarded electronic items and separating them from regular waste. The activity helped me understand how proper segregation, safe handling, and responsible recycling can reduce environmental risks while improving the recovery of useful electronic materials.',
+    assignment: 'E-Waste Collection & Segregation (Activity 03)',
+    icon: Recycle,
+    color: 'text-violet-600 bg-violet-50 border-violet-200',
+  },
 ];
-
 
 export default function LearningTimeline() {
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
+      transition: { staggerChildren: 0.2 },
     },
   };
 
@@ -60,14 +63,11 @@ export default function LearningTimeline() {
     },
   };
 
-
   return (
     <section id="learning" className="py-24 px-6 bg-white relative overflow-hidden">
-      {/* Decorative side trace */}
       <div className="absolute left-0 bottom-0 w-[400px] h-[400px] bg-slate-50/50 rounded-full filter blur-3xl pointer-events-none -z-10" />
 
       <div className="max-w-4xl mx-auto">
-        {/* Title */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-charcoal">
             My Learning Journey
@@ -78,7 +78,6 @@ export default function LearningTimeline() {
           </p>
         </div>
 
-        {/* Timeline body */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -89,19 +88,13 @@ export default function LearningTimeline() {
           {milestones.map((item, index) => {
             const MilestoneIcon = item.icon;
             return (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="relative group"
-              >
-                {/* Connecting bullet */}
+              <motion.div key={index} variants={itemVariants} className="relative group">
                 <div
                   className={`absolute -left-[39px] sm:-left-[47px] top-1.5 p-2 rounded-full border-2 bg-white transition-all duration-300 group-hover:scale-110 shadow-sm ${item.color}`}
                 >
                   <MilestoneIcon className="w-4 h-4 sm:w-5 h-5" />
                 </div>
 
-                {/* Milestone details box */}
                 <div className="bg-slate-50/70 p-6 rounded-2xl border border-slate-100 hover:border-emerald-100/50 hover:bg-white hover:shadow-md transition-all duration-300 space-y-3">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
                     <span className="text-xs font-bold text-slate-400 font-sans uppercase tracking-wider">
