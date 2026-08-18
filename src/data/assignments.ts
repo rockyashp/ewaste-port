@@ -35,7 +35,7 @@ export const assignments: Assignment[] = [
     category: "Activity",
     date: "2026-07-29",
     type: "image",
-    thumbnail: "/assets/assignments/assignment-01/pledge.webp", // Replace with your uploaded image
+    thumbnail: "/assets/assignments/assignment-01/pledge.webp",
     files: [
       {
         name: "Sustainable Future Pledge Card",
@@ -57,16 +57,6 @@ export const assignments: Assignment[] = [
           "Sustainable behavior change in engineering practice"
         ]
       },
-      /*{
-        id: "methodology",
-        title: "Methodology",
-        content: "To implement this commitment, I established a personal check-list for active daily device use:\n1. Audit household electronics: Gather and log all obsolete hardware items currently in storage.\n2. Apply sleep profiles: Configure idle sleep timers on laptop and monitor screens to turn off in under 10 minutes.\n3. Segment chargers: Group accessory chargers and cables in dedicated compartments, committing to utilize them fully before purchasing upgrades."
-      },*/
-      /*{
-        id: "observations",
-        title: "Observations",
-        content: "- Accessories and charging bricks constitute the largest number of duplicate/redundant electronic items in the household.\n- Standby electricity settings (phantom loads) accounts for a constant, small leakage of power on standard chargers when plugged in without a device.\n- Access to authorized e-waste sorting bins in residential zones is very limited, requiring active driving to collection hubs."
-      },*/
       {
         id: "outcomes",
         title: "Outcomes",
@@ -81,11 +71,11 @@ export const assignments: Assignment[] = [
     category: "Activity",
     date: "2026-08-05",
     type: "image",
-    thumbnail: "/assets/assignments/assignment-02/carbon.jpeg", // Replace with /assets/assignments/assignment-02/carbon.webp when you upload your screenshot
+    thumbnail: "/assets/assignments/assignment-02/carbon.jpeg",
     files: [
       {
         name: "Carbon Footprint Comparison Chart",
-        url: "/assets/assignments/assignment-02/carbon.jpeg", // Replace with /assets/assignments/assignment-02/carbon.webp when you upload your screenshot
+        url: "/assets/assignments/assignment-02/carbon.jpeg",
         type: "image"
       }
     ],
@@ -107,6 +97,42 @@ export const assignments: Assignment[] = [
         id: "outcomes",
         title: "Outcomes",
         content: "- Established a household emission baseline of 13 tonnes of CO2.\n- Identified that food is the main and big source of carbon discharge in my house."
+      }
+    ]
+  },
+  {
+    id: 3,
+    title: "E-Waste Collection and Segregation Activity",
+    description: "Practical activity focused on identifying, sorting, and preparing discarded electronic items for responsible recycling.",
+    category: "Activity",
+    date: "2026-08-12",
+    type: "image",
+    thumbnail: "/assets/assignments/assignment-03/ewaste-segregation.webp",
+    files: [
+      {
+        name: "E-Waste Segregation Activity",
+        url: "/assets/assignments/assignment-03/ewaste-segregation.webp",
+        type: "image"
+      }
+    ],
+    tabs: [
+      {
+        id: "overview",
+        title: "Overview",
+        objective: "Identify common electronic waste items and understand how they should be segregated before recycling or disposal.",
+        problemStatement: "Improper mixing of electronic waste with regular household waste can expose people and the environment to hazardous materials and can also reduce the recovery of reusable components.",
+        theory: "E-waste management starts with collection, identification, segregation, safe storage, and transfer to authorized recycling or recovery channels.",
+        engineeringConcepts: [
+          "Source segregation of electronic waste",
+          "Identification of reusable and recyclable components",
+          "Safe handling and temporary storage",
+          "Responsible transfer to authorized recycling channels"
+        ]
+      },
+      {
+        id: "outcomes",
+        title: "Outcomes",
+        content: "- Identified common obsolete electronic items and separated them from general waste.\n- Understood why batteries, cables, circuit boards, and other electronic components require separate handling.\n- Improved awareness of practical steps involved in responsible e-waste disposal."
       }
     ]
   }
