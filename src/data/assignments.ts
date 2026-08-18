@@ -102,16 +102,16 @@ export const assignments: Assignment[] = [
   },
   {
     id: 3,
-    title: "E-Waste Collection and Segregation Activity",
-    description: "Practical activity focused on identifying, sorting, and preparing discarded electronic items for responsible recycling.",
+    title: "Video Based Quiz",
+    description: "Activity focused on how much I understood the ewaste recycling.",
     category: "Activity",
     date: "2026-08-12",
     type: "image",
-    thumbnail: "/assets/assignments/assignment-03/ewaste-segregation.webp",
+    thumbnail: "/assets/assignments/assignment-03/video.jpeg",
     files: [
       {
-        name: "E-Waste Segregation Activity",
-        url: "/assets/assignments/assignment-03/ewaste-segregation.webp",
+        name: "Video Based Quiz",
+        url: "/assets/assignments/assignment-03/video.jpeg",
         type: "image"
       }
     ],
@@ -119,20 +119,17 @@ export const assignments: Assignment[] = [
       {
         id: "overview",
         title: "Overview",
-        objective: "Identify common electronic waste items and understand how they should be segregated before recycling or disposal.",
-        problemStatement: "Improper mixing of electronic waste with regular household waste can expose people and the environment to hazardous materials and can also reduce the recovery of reusable components.",
-        theory: "E-waste management starts with collection, identification, segregation, safe storage, and transfer to authorized recycling or recovery channels.",
+        objective: "",
+        problemStatement: "",
+        theory: "",
         engineeringConcepts: [
-          "Source segregation of electronic waste",
-          "Identification of reusable and recyclable components",
-          "Safe handling and temporary storage",
-          "Responsible transfer to authorized recycling channels"
+          
         ]
       },
       {
         id: "outcomes",
         title: "Outcomes",
-        content: "- Identified common obsolete electronic items and separated them from general waste.\n- Understood why batteries, cables, circuit boards, and other electronic components require separate handling.\n- Improved awareness of practical steps involved in responsible e-waste disposal."
+        content: ""
       }
     ]
   }
