@@ -1,4 +1,4 @@
-import { FileText, Image as ImageIcon, Video, Layers, Calendar, ArrowRight } from 'lucide-react';
+import { FileText, Image as ImageIcon, Video, Layers, Calendar, ArrowRight, Globe, ExternalLink } from 'lucide-react';
 import type { Assignment } from '../data/assignments';
 
 
@@ -19,6 +19,8 @@ export default function AssignmentCard({ assignment, onOpen }: AssignmentCardPro
         return <Video className="w-4 h-4 text-emerald-500" />;
       case 'mixed':
         return <Layers className="w-4 h-4 text-amber-500" />;
+      case 'link':
+        return <Globe className="w-4 h-4 text-emerald-500" />;
       default:
         return null;
     }
@@ -30,11 +32,13 @@ export default function AssignmentCard({ assignment, onOpen }: AssignmentCardPro
       case 'pdf':
         return 'PDF Report';
       case 'image':
-        return 'Poster/Design';
+        return 'Teardown / Visual';
       case 'video':
         return 'Video Walkthrough';
       case 'mixed':
         return 'Multi-file Archive';
+      case 'link':
+        return 'External Platform';
       default:
         return '';
     }
@@ -84,14 +88,28 @@ export default function AssignmentCard({ assignment, onOpen }: AssignmentCardPro
           </p>
         </div>
 
-        {/* Action Button */}
-        <button
-          onClick={() => onOpen(assignment)}
-          className="w-full mt-2 py-3 px-4 bg-slate-50 text-slate-700 font-sans font-bold text-xs sm:text-sm rounded-xl border border-slate-100 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer"
-        >
-          <span>View Assignment</span>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-        </button>
+        {/* Action Button Row */}
+        <div className="flex items-center space-x-2 mt-2">
+          <button
+            onClick={() => onOpen(assignment)}
+            className="flex-grow py-3 px-4 bg-slate-50 text-slate-700 font-sans font-bold text-xs sm:text-sm rounded-xl border border-slate-100 hover:bg-primary hover:text-white hover:border-primary transition-all duration-200 flex items-center justify-center space-x-2 cursor-pointer"
+          >
+            <span>View Details</span>
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </button>
+
+          {assignment.externalUrl && (
+            <a
+              href={assignment.externalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 bg-emerald-50 text-primary border border-emerald-200/60 rounded-xl hover:bg-primary hover:text-white transition-all shrink-0 cursor-pointer shadow-2xs"
+              title="Open external platform in new tab"
+            >
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

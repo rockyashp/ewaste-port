@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
-import { BookOpen, Flame, Calculator, MessageSquare, Recycle } from 'lucide-react';
+import { BookOpen, Flame, Calculator, MessageSquare, Recycle, Cpu, BarChart3 } from 'lucide-react';
 
 const milestones = [
   {
@@ -42,6 +42,22 @@ const milestones = [
     assignment: 'Video-Based Task',
     icon: Recycle,
     color: 'text-violet-600 bg-violet-50 border-violet-200',
+  },
+  {
+    date: 'Week 4 — Activity',
+    topic: 'Device Anatomy & Hardware Teardown',
+    desc: 'Physically examined the internal composition of consumer electronics, uncovering how dense packing of copper, silicon, plastics, and rare earth metals impacts repairability. Directly connected findings to SDG 12 and the Circular Economy.',
+    assignment: 'Device Anatomy (Activity 06)',
+    icon: Cpu,
+    color: 'text-indigo-600 bg-indigo-50 border-indigo-200',
+  },
+  {
+    date: 'Week 5 — Activity',
+    topic: 'E-Waste Intelligence & Data Analytics',
+    desc: 'Analyzed country-wise e-waste generation, recycling quantities, and recovery rates using interactive data visualization on Streamlit to identify global leaders, laggards, and management gaps.',
+    assignment: 'Data Analysis (Activity 07)',
+    icon: BarChart3,
+    color: 'text-teal-600 bg-teal-50 border-teal-200',
   },
 ];
 

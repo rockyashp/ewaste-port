@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { X, FileText, Image as ImageIcon, Video, ExternalLink, Download, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react';
+import { X, FileText, Image as ImageIcon, Video, ExternalLink, Download, ZoomIn, ZoomOut, Maximize2, Globe } from 'lucide-react';
 import type { Assignment, AssignmentFile } from '../data/assignments';
 
 
@@ -92,6 +92,7 @@ export default function AssignmentViewer({ assignment, onClose }: AssignmentView
                       {file.type === 'pdf' && <FileText className="w-3.5 h-3.5" />}
                       {file.type === 'image' && <ImageIcon className="w-3.5 h-3.5" />}
                       {file.type === 'video' && <Video className="w-3.5 h-3.5" />}
+                      {file.type === 'link' && <ExternalLink className="w-3.5 h-3.5" />}
                       <span className="truncate max-w-[120px]">{file.name}</span>
                     </button>
                   );
@@ -195,24 +196,62 @@ export default function AssignmentViewer({ assignment, onClose }: AssignmentView
                       </div>
                     </div>
                   )}
+
+                  {/* LINK / EXTERNAL WEBSITE TYPE */}
+                  {activeFile.type === 'link' && (
+                    <div className="w-full h-full min-h-[320px] flex flex-col items-center justify-center p-6 text-center space-y-5 bg-gradient-to-b from-white to-slate-50 rounded-xl border border-slate-200/80">
+                      <div className="w-16 h-16 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-primary shadow-sm">
+                        <Globe className="w-8 h-8" />
+                      </div>
+                      <div className="space-y-1.5 max-w-sm">
+                        <h3 className="font-display font-bold text-base sm:text-lg text-charcoal">
+                          Interactive External Platform
+                        </h3>
+                        <p className="text-xs sm:text-sm text-slate-500 font-sans leading-relaxed">
+                          This analytical activity was executed using an external web dashboard and empirical dataset.
+                        </p>
+                      </div>
+                      <a
+                        href={activeFile.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 px-5 py-2.5 bg-primary text-white rounded-xl font-sans font-bold text-xs sm:text-sm shadow-md hover:bg-primary-hover hover:scale-105 active:scale-95 transition-all"
+                      >
+                        <span>Open Live Website</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </a>
+                    </div>
+                  )}
                 </>
               )}
             </div>
 
-            {/* Downloader Control Bar */}
+            {/* Downloader / Action Control Bar */}
             {activeFile && (
               <div className="mt-4 pt-4 border-t border-slate-200/50 flex items-center justify-between">
                 <span className="text-slate-500 font-sans font-medium text-xs sm:text-sm truncate pr-4">
                   {activeFile.name}
                 </span>
-                <a
-                  href={activeFile.url}
-                  download={activeFile.url.split('/').pop()}
-                  className="px-4 py-2 bg-slate-900 text-white font-sans font-bold text-xs sm:text-sm rounded-xl hover:bg-slate-800 transition-all flex items-center space-x-2 cursor-pointer shadow-xs shrink-0"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Download Resource</span>
-                </a>
+                {activeFile.type === 'link' ? (
+                  <a
+                    href={activeFile.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-primary text-white font-sans font-bold text-xs sm:text-sm rounded-xl hover:bg-primary-hover transition-all flex items-center space-x-2 cursor-pointer shadow-xs shrink-0"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span>Visit Website</span>
+                  </a>
+                ) : (
+                  <a
+                    href={activeFile.url}
+                    download={activeFile.url.split('/').pop()}
+                    className="px-4 py-2 bg-slate-900 text-white font-sans font-bold text-xs sm:text-sm rounded-xl hover:bg-slate-800 transition-all flex items-center space-x-2 cursor-pointer shadow-xs shrink-0"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Resource</span>
+                  </a>
+                )}
               </div>
             )}
           </div>
@@ -287,11 +326,33 @@ export default function AssignmentViewer({ assignment, onClose }: AssignmentView
                       </div>
                     )}
 
-                    {/* General Text block (Methodology, Observations, Outcomes) */}
-                    {!assignment.tabs[activeTabIdx].objective && assignment.tabs[activeTabIdx].content && (
+                    {/* General Text block (Methodology, Observations, Outcomes, Learnings, Sustainability) */}
+                    {assignment.tabs[activeTabIdx].content && (
                       <p className="text-slate-700 text-xs sm:text-sm whitespace-pre-line leading-relaxed">
                         {assignment.tabs[activeTabIdx].content}
                       </p>
+                    )}
+
+                    {/* Reflections Sub-block */}
+                    {assignment.tabs[activeTabIdx].reflections && (
+                      <div className="space-y-3 pt-2">
+                        <h4 className="text-[11px] font-black text-primary uppercase tracking-wider">Self Reflection</h4>
+                        <div className="space-y-3">
+                          {assignment.tabs[activeTabIdx].reflections?.map((ref, rIdx) => (
+                            <div
+                              key={rIdx}
+                              className="bg-slate-50 border border-slate-200/80 rounded-xl p-3.5 space-y-1.5 hover:border-emerald-200 transition-colors shadow-2xs"
+                            >
+                              <span className="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-primary/10 text-primary">
+                                {ref.question}
+                              </span>
+                              <p className="text-slate-700 text-xs sm:text-sm leading-relaxed">
+                                {ref.answer}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     )}
                   </div>
                 ) : (
